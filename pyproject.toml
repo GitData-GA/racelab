@@ -1,0 +1,23 @@
+[project]
+name = "racelab"
+version = "0.0.1"
+authors = [
+  { name="Li Yuan", email="lyuan@gd.edu.kg" },
+  { name="Hengyuan Liu", email="hliu@gd.edu.kg" },
+]
+maintainers = [
+  { name="Li Yuan", email="lyuan@gd.edu.kg" },
+  { name="Hengyuan Liu", email="hliu@gd.edu.kg" },
+]
+description = "An initial commit of the racelab package for racing competition."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://racelab.gd.edu.kg/"
+Issues = "https://github.com/GitData-GA/racelab/issues"
