@@ -40,7 +40,7 @@ def reorder_track(track):
     for i in range(num_lines):
         line_coords = track[:, 2 * i : 2 * i + 2]
         line_data.append(
-            (np.full(line_coords.shape, LineString(line_coords).length), line_coords)
+            (LineString(line_coords).length, line_coords)
         )
 
     sorted_lines = sorted(line_data, key=lambda x: x[0], reverse=True)
