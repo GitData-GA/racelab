@@ -13,10 +13,11 @@ def optimize(track, optimizer, **param):
         of waypoints, and columns represent different lines (e.g., outer, middle, inner).
     optimizer : str
         The name of the optimization algorithm to use. Must be one of the supported
-        optimizers listed in the function (e.g., 'k1999').
+        optimizers listed in the function (e.g., 'k1999', 'custom').
     **param : dict
-        Additional parameters required by the selected optimizer. These are passed
-        directly to the optimizer function.
+        Additional parameters required by the selected optimizer. For the 'custom'
+        optimizer, a 'custom_func' key must be provided with the custom optimization
+        function.
 
     Returns
     -------
@@ -26,15 +27,25 @@ def optimize(track, optimizer, **param):
     Raises
     ------
     ValueError
-        If an unsupported optimizer is specified.
+        If an unsupported optimizer is specified, or if 'custom' is selected but
+        no valid 'custom_func' is provided.
     """
     track_copy = copy.deepcopy(track)
 
     optimizer_dispatch = {
         "k1999": k1999,
+        "custom": None,
     }
 
     optimizer_func = optimizer_dispatch.get(optimizer)
+
+    if optimizer == "custom":
+        custom_func = param.get("custom_func")
+        if not callable(custom_func):
+            raise ValueError(
+                "For the 'custom' optimizer, a 'custom_func' parameter must be provided, and it must be callable."
+            )
+        optimizer_func = custom_func
 
     if not optimizer_func:
         raise ValueError(
