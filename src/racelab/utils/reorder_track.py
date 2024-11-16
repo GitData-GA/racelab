@@ -2,13 +2,10 @@ import numpy as np
 
 def reorder_track(track):
     """
-    Reorder the lines of a track array based on their distance from the first point of the track.
-    The lines are sorted from the outer bound (farthest from the first point) 
-    to the inner bound (closest to the first point).
-
-    This function takes a 2D NumPy array representing a track with multiple
-    lines (x, y coordinate pairs) and reorders the lines based on their distance
-    from the first point in the track.
+    Reorder the lines of a track array based on their directional distance
+    to the first reference line in the track. The lines are sorted based
+    on the average distance (with direction indicated by positive or negative
+    values) from every point of the reference line.
 
     Parameters
     ----------
@@ -21,24 +18,27 @@ def reorder_track(track):
     -------
     numpy.ndarray
         A reordered 2D array where the columns are rearranged such that
-        the lines (x, y pairs) are sorted by their distance from the first point
-        in descending order (farthest to closest).
+        the lines are sorted by their average directional distance to the
+        first reference line.
     """
-    # The first point in the track as the reference point
-    reference_point = track[0]
-
-    num_lines = track.shape[1] // 2
+    # Extract the first pair of coordinates as the reference line
+    reference_line = track[:, :2]  # First line (first two columns)
+    
+    num_lines = track.shape[1] // 2  # Number of lines in the track
     line_data = []
 
-    for i in range(num_lines):
-        # Extract each line's coordinates
+    for i in range(1, num_lines):  # Start from the second line to compare with the reference line
         line_coords = track[:, 2 * i : 2 * i + 2]
-        # Find the distance from the first point to the centroid of this line
-        line_centroid = np.mean(line_coords, axis=0)
-        distance = np.linalg.norm(line_centroid - reference_point)
-        line_data.append((distance, line_coords))
+        
+        # Calculate the directional distances for this line to the reference line
+        distances = np.linalg.norm(line_coords - reference_line, axis=1)  # Distance between each point of the line and the reference line
+        
+        # Average the distances for this line
+        avg_distance = np.mean(distances)
+        line_data.append((avg_distance, line_coords))
 
-    # Sort the lines by distance in descending order (farthest to closest)
+    # Sort the lines based on the average distance, from outer to inner (descending)
     sorted_lines = sorted(line_data, key=lambda x: x[0], reverse=True)
 
+    # Return the sorted lines as a single array
     return np.hstack([line[1] for line in sorted_lines])
