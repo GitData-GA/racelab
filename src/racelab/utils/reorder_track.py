@@ -29,7 +29,7 @@ def reorder_track(track):
     num_lines = track.shape[1] // 2  # Number of lines in the track
     line_data = []
 
-    for i in range(1, num_lines):  # Iterate over each line
+    for i in range(num_lines):  # Iterate over each line
         # Extract coordinates for the current line (x, y pairs)
         line_coords = track[:, 2 * i : 2 * i + 2]
         
@@ -50,6 +50,6 @@ def reorder_track(track):
 
     # Combine all lines (including the reference line) in the sorted order
     # Add the reference line at the beginning of the sorted lines
-    sorted_track = np.hstack([reference_line] + [line[1] for line in sorted_lines])
+    sorted_track = np.hstack([line[1] for line in sorted_lines])
 
     return sorted_track
