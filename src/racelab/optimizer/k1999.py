@@ -47,7 +47,7 @@ def k1999(track, line_iterations, xi_iterations, margin=0, atol=1e-3):
     refined_line = (outer_border + inner_border) / 2.0
 
     inner_polygon = Polygon(inner_border + margin * (refined_line - inner_border))
-    outer_polygon = Polygon(outer_border - margin * (refined_line - outer_border))
+    outer_polygon = Polygon(outer_border - margin * (outer_border - refined_line))
 
     # Perform the line iterations
     for _ in range(line_iterations):
