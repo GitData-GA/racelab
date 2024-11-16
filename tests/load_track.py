@@ -1,1 +1,0 @@
-track = load_track(path="test_track.npy")
