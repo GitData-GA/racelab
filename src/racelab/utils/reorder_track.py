@@ -27,7 +27,7 @@ def reorder_track(track):
     num_lines = track.shape[1] // 2  # Number of lines in the track
     line_data = []
 
-    for i in range(1, num_lines):  # Start from the second line to compare with the reference line
+    for i in range(0, num_lines):  # Start from the second line to compare with the reference line
         line_coords = track[:, 2 * i : 2 * i + 2]
         
         # Calculate the directional distances for this line to the reference line
