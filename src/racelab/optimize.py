@@ -14,9 +14,9 @@ def optimize(track, optimizer, **param):
     optimizer : str
         The name of the optimization algorithm to use. Must be one of the supported
         optimizers listed in the function (e.g., 'k1999', 'custom').
-    **param : dict
-        Additional parameters required by the selected optimizer. For the 'custom'
-        optimizer, a 'custom_func' key must be provided with the custom optimization
+    **param
+        Additional arguments required by the selected optimizer. For the 'custom'
+        optimizer, a 'custom_func' argument must be provided as the custom optimization
         function.
 
     Returns
@@ -40,10 +40,10 @@ def optimize(track, optimizer, **param):
     optimizer_func = optimizer_dispatch.get(optimizer)
 
     if optimizer == "custom":
-        custom_func = param.get("custom_func")
+        custom_func = param.pop("custom_func", None)
         if not callable(custom_func):
             raise ValueError(
-                "For the 'custom' optimizer, a 'custom_func' parameter must be provided, and it must be callable."
+                "For the 'custom' optimizer, a 'custom_func' argument must be provided, and it must be callable."
             )
         optimizer_func = custom_func
 
