@@ -1,4 +1,5 @@
 import copy
+from racelab.optimizer.k1999 import k1999
 
 
 def optimize(track, optimizer, **param):
