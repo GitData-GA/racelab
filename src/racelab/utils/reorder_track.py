@@ -29,7 +29,7 @@ def reorder_track(track):
     num_lines = track.shape[1] // 2  # Number of lines in the track
     line_data = []
 
-    for i in range(num_lines):  # Iterate over each line
+    for i in range(1, num_lines):  # Iterate over each line
         # Extract coordinates for the current line (x, y pairs)
         line_coords = track[:, 2 * i : 2 * i + 2]
         
