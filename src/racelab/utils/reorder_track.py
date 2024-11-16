@@ -37,10 +37,6 @@ def reorder_track(track):
         # We subtract the reference line's points from each of the line's points
         distances = np.linalg.norm(line_coords - reference_line, axis=1)  # Euclidean distance
 
-        # We want to adjust the direction such that the reference line has distance 0
-        # The reference line should have 0 distance from itself, so subtract the first point's distance
-        distances -= distances[0]
-
         # Average the distances for this line
         avg_distance = np.mean(distances)
         line_data.append((avg_distance, line_coords))
