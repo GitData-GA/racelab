@@ -1,4 +1,4 @@
-from shapely.geometry import Point
+from shapely.geometry import Point, Polygon
 from racelab.optimizer.utils.k1999 import menger_curvature, refine_point, refine_line
 
 
