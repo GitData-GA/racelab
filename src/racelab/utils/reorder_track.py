@@ -38,7 +38,7 @@ def reorder_track(track):
         line_data.append((avg_distance, line_coords))
 
     # Sort the lines based on the average distance, from outer to inner (descending)
-    sorted_lines = sorted(line_data, key=lambda x: x[0], reverse=True)
+    sorted_lines = sorted(line_data, key=lambda x: x[0])
 
     # Return the sorted lines as a single array
     return np.hstack([line[1] for line in sorted_lines])
