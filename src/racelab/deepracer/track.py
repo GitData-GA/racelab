@@ -27,30 +27,24 @@ def track(name=None):
         If `name` is provided but does not match any file in the `data` folder.
     """
 
-    # Get the current module's name dynamically
     package_name = __name__.split(".")[
         0
-    ]  # 'racelab' if the file is in 'racelab.deepracer'
+    ] 
 
-    # Get the path to the 'data' folder in the current package (e.g., 'racelab.deepracer/data')
     data_folder = pkg_resources.resource_filename(package_name, "deepracer/data")
 
     if name is None:
-        # List all .npy files in the 'data' folder and strip the '.npy' extension
         track_names = [
             os.path.splitext(f)[0]
             for f in os.listdir(data_folder)
             if f.endswith(".npy")
         ]
 
-        # Print available track names as a comma-separated string
         print("Available track names:", ", ".join(track_names))
     else:
-        # Check if the requested track exists in the data folder
         if f"{name}.npy" not in os.listdir(data_folder):
             raise FileNotFoundError(f"Track '{name}' not found in the 'data' folder.")
 
-        # Return the path for the specific track if a name is provided
         return pkg_resources.resource_filename(
             package_name, f"deepracer/data/{name}.npy"
         )
