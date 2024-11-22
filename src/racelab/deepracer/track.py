@@ -36,11 +36,11 @@ def track(name=None):
     ]
 
     if name is None:
-        print("Available track names:", ", ".join(track_names))
+        print("Available track names:\n", '\n'.join(track_names))
     else:
         if f"{name}.npy" not in os.listdir(data_folder):
             raise FileNotFoundError(
-                f"Track '{name}' not found.\nAvailable track names: {','.join(track_names)}"
+                f"Track '{name}' not found. Available track names\n: {'\n'.join(track_names)}"
             )
 
         return pkg_resources.resource_filename(
