@@ -19,5 +19,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://racelab.gd.edu.kg/"
+Homepage = "https://github.com/GitData-GA/racelab/"
 Issues = "https://github.com/GitData-GA/racelab/issues"
