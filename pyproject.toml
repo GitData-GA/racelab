@@ -1,6 +1,6 @@
 [project]
 name = "racelab"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="Li Yuan", email="lyuan@gd.edu.kg" },
   { name="Hengyuan Liu", email="hliu@gd.edu.kg" },
