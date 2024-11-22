@@ -4,7 +4,7 @@ from racelab.optimizer.utils.k1999 import menger_curvature, refine_point, refine
 
 def k1999(track, line_iterations, xi_iterations, margin=0, atol=1e-3):
     """
-    Implements the K1999 algorithm to compute the optimal racing line for a given track.
+    Implements the K1999 algorithm [1]_ to compute the optimal racing line for a given track.
 
     Parameters
     ----------
