@@ -27,23 +27,21 @@ def track(name=None):
         If `name` is provided but does not match any file in the `data` folder.
     """
 
-    package_name = __name__.split(".")[
-        0
-    ] 
+    package_name = __name__.split(".")[0]
 
     data_folder = pkg_resources.resource_filename(package_name, "deepracer/data")
 
-    if name is None:
-        track_names = [
-            os.path.splitext(f)[0]
-            for f in os.listdir(data_folder)
-            if f.endswith(".npy")
-        ]
+    track_names = [
+        os.path.splitext(f)[0] for f in os.listdir(data_folder) if f.endswith(".npy")
+    ]
 
+    if name is None:
         print("Available track names:", ", ".join(track_names))
     else:
         if f"{name}.npy" not in os.listdir(data_folder):
-            raise FileNotFoundError(f"Track '{name}' not found in the 'data' folder.")
+            raise FileNotFoundError(
+                f"Track '{name}' not found.\nAvailable track names: {','.join(track_names)}"
+            )
 
         return pkg_resources.resource_filename(
             package_name, f"deepracer/data/{name}.npy"
