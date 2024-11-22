@@ -4,7 +4,7 @@ from racelab.optimizer.utils.k1999 import menger_curvature, refine_point, refine
 
 def k1999(track, line_iterations, xi_iterations, margin=0, atol=1e-3):
     """
-    Implements the K1999 algorithm [1]_ to compute the optimal racing line for a given track.
+    Implements the K1999 algorithm to compute the optimal racing line for a given track.
 
     Parameters
     ----------
@@ -36,9 +36,10 @@ def k1999(track, line_iterations, xi_iterations, margin=0, atol=1e-3):
     - The refinement process ensures the racing line lies within the adjusted borders 
       while optimizing for smoother curvature.
     
-    .. [1] Coulom, Rémi. "Apprentissage Par Renforcement Utilisant Des Réseaux de Neurones, 
-       Avec Des Applications Au Contrôle Moteur." Theses.hal.science, 19 June 2002, 
-       theses.hal.science/tel-00004386. Accessed 20 Feb. 2023.
+    References:
+    - Coulom, Rémi. "Apprentissage Par Renforcement Utilisant Des Réseaux de Neurones, 
+      Avec Des Applications Au Contrôle Moteur." Theses.hal.science, 19 June 2002, 
+      theses.hal.science/tel-00004386. Accessed 20 Feb. 2023.
     """
     if margin < 0:
         raise ValueError(
