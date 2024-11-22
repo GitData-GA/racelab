@@ -35,6 +35,9 @@ def k1999(track, line_iterations, xi_iterations, margin=0, atol=1e-3):
     - Margins are applied by adjusting the inner and outer borders towards the middle line.
     - The refinement process ensures the racing line lies within the adjusted borders 
       while optimizing for smoother curvature.
+    .. [1] Coulom, Rémi. "Apprentissage Par Renforcement Utilisant Des Réseaux de Neurones, 
+        Avec Des Applications Au Contrôle Moteur." Theses.hal.science, 19 June 2002, 
+        theses.hal.science/tel-00004386. Accessed 20 Feb. 2023.
     """
     if margin < 0:
         raise ValueError(
