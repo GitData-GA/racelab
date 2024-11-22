@@ -1,4 +1,4 @@
-# RaceLab: A Python Framework for Track Optimization
+# RaceLab: A Framework for Car Racing
 
 Optimize racing tracks like a pro – for projects, competitions, and innovation.
 
