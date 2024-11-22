@@ -21,3 +21,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/GitData-GA/racelab/"
 Issues = "https://github.com/GitData-GA/racelab/issues"
+
+[tool.setuptools.package-data]
+"racelab.deepracer.data" = ["*.npy"]
