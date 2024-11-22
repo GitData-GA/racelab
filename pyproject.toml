@@ -9,7 +9,7 @@ maintainers = [
   { name="Li Yuan", email="lyuan@gd.edu.kg" },
   { name="Hengyuan Liu", email="hliu@gd.edu.kg" },
 ]
-description = "Optimize racing tracks like a pro – for projects, competitions, and innovation."
+description = "A Framework for Car Racing"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
