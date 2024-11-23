@@ -93,12 +93,6 @@ def refine_line(track, refined_line, inner_polygon, outer_polygon, xi_iterations
         next2_idx = (point_index + 2 + num_points) % num_points
 
         # Calculate curvatures
-        curvature_at_point = menger_curvature(
-            refined_line[prev_idx],
-            refined_line[point_index],
-            refined_line[next_idx],
-            atol,
-        )
         curvature_before = menger_curvature(
             refined_line[prev2_idx],
             refined_line[prev_idx],
