@@ -24,4 +24,3 @@ Issues = "https://github.com/GitData-GA/racelab/issues"
 
 [tool.setuptools.package-data]
 "racelab.deepracer.data" = ["*.npy"]
-"racelab.f1tenth.data" = ["*.csv"]
