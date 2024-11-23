@@ -4,6 +4,8 @@ from shapely.geometry import Point, Polygon
 
 def menger_curvature(pt1, pt2, pt3, atol):
     """Calculate Menger curvature for three points."""
+    np.seterr(all="ignore")
+    
     vec21 = np.array([pt1[0] - pt2[0], pt1[1] - pt2[1]])
     vec23 = np.array([pt3[0] - pt2[0], pt3[1] - pt2[1]])
 
@@ -91,12 +93,6 @@ def refine_line(track, refined_line, inner_polygon, outer_polygon, xi_iterations
         next2_idx = (point_index + 2 + num_points) % num_points
 
         # Calculate curvatures
-        curvature_at_point = menger_curvature(
-            refined_line[prev_idx],
-            refined_line[point_index],
-            refined_line[next_idx],
-            atol,
-        )
         curvature_before = menger_curvature(
             refined_line[prev2_idx],
             refined_line[prev_idx],
