@@ -3,20 +3,30 @@ from shapely.geometry import Point, Polygon
 
 
 def menger_curvature(pt1, pt2, pt3, atol):
-    """Calculate Menger curvature for three points."""
-    np.seterr(all="ignore")
+    """Calculate Menger curvature for three points with optimizations."""
+    x21, y21 = pt1[0] - pt2[0], pt1[1] - pt2[1]
+    x23, y23 = pt3[0] - pt2[0], pt3[1] - pt2[1]
     
-    vec21 = np.array([pt1[0] - pt2[0], pt1[1] - pt2[1]])
-    vec23 = np.array([pt3[0] - pt2[0], pt3[1] - pt2[1]])
-
-    norm21 = np.linalg.norm(vec21)
-    norm23 = np.linalg.norm(vec23)
-
-    theta = np.arccos(np.dot(vec21, vec23) / (norm21 * norm23))
-    if np.isclose(theta - np.pi, 0.0, atol=atol):
+    norm21 = np.hypot(x21, y21)
+    norm23 = np.hypot(x23, y23)
+    
+    if norm21 == 0 or norm23 == 0:
+        return 0.0 
+    
+    dot_product = x21 * x23 + y21 * y23
+    cos_theta = dot_product / (norm21 * norm23)
+    
+    cos_theta = np.clip(cos_theta, -1.0, 1.0)
+    theta = np.arccos(cos_theta)
+    
+    if np.isclose(theta, np.pi, atol=atol):
         theta = 0.0
-
-    dist13 = np.linalg.norm(vec21 - vec23)
+    
+    dist13 = np.hypot(x21 - x23, y21 - y23)
+    
+    if dist13 == 0:
+        return 0.0  
+    
     return 2 * np.sin(theta) / dist13
 
 
