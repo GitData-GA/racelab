@@ -33,12 +33,12 @@ def track(name=None):
 
     track_names = [
         os.path.splitext(f)[0] for f in os.listdir(data_folder) if f.endswith(".csv")
-    ].sort()
+    ]
 
     if name is None:
-        print("Available track names:\n", '\n'.join(track_names))
+        print("Available track names:\n", '\n'.join(sorted(track_names)))
     else:
-        if f"{name}.npy" not in os.listdir(data_folder):
+        if f"{name}.csv" not in os.listdir(data_folder):
             raise FileNotFoundError(
                 f"Track '{name}' not found."
             )
