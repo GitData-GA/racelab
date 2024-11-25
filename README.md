@@ -1,8 +1,8 @@
-# RaceLab: A Framework for Car Racing
-
 <center>
   <img src="https://racelab.gd.edu.kg/assets/img/logo.svg" width="350px">
 </center>
+
+# RaceLab: A Framework for Car Racing
 
 Optimize racing tracks like a pro – for projects, competitions, and innovation.
 
